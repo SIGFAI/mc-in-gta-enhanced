@@ -1,0 +1,243 @@
+{
+  "id": "sigf/mc-in-gta-enhanced",
+  "version": "0.1.0",
+  "name": "Minecraft in GTA Enhanced",
+  "tagline": "Real Minecraft 26.3 inside GTA V Enhanced story mode: pick Steve on the character wheel and build, fight and blow things up in Los Santos.",
+  "kind": "passthrough",
+  "games": [
+    {
+      "game": "gta5",
+      "role": "host",
+      "label": "GTA V Enhanced",
+      "engine": "GTA V Enhanced (RAGE, story mode) + ScriptHookV ASI MCPassthrough (C++) + ReShade add-on",
+      "apps": {
+        "steam": "3240220"
+      },
+      "builds": {
+        "steam": [
+          "1.0.1158.16"
+        ]
+      },
+      "runtime": "GTA V Enhanced (GTA5_Enhanced.exe), loaded upstream on 1.0.1158.16; Legacy is not supported"
+    },
+    {
+      "game": "minecraft",
+      "role": "guest",
+      "label": "Minecraft",
+      "engine": "Minecraft Java 26.3 + Fabric mod passthrough (Java)",
+      "mc": "26.3",
+      "loader": "fabric@0.19.5",
+      "java": "25"
+    }
+  ],
+  "requires": [
+    {
+      "id": "scripthookv",
+      "page": "https://www.dev-c.com/gtav/scripthookv/",
+      "license": "Alexander Blade: free, not redistributable",
+      "note": "Script Hook V for your GTA V Enhanced build: copy ScriptHookV.dll, dinput8.dll and xinput1_4.dll from its download into the GTA V Enhanced folder"
+    },
+    {
+      "id": "reshade",
+      "version": "6.8.0 (add-on)",
+      "license": "BSD-3-Clause, shipped unchanged",
+      "page": "https://reshade.me/",
+      "note": "installed into the GTA V folder by the app as ReShade64.asi",
+      "source": {
+        "url": "https://github.com/SIGFAI/mc-in-gta-enhanced/releases/download/v0.1.0/reshade-6.8.0-addon.zip",
+        "sha256": "d4167356162b209be93b6a35cf7e1253cffb2ac00746cf007a7201d362b00d07"
+      }
+    },
+    {
+      "id": "fabric-loader",
+      "version": "0.19.5"
+    },
+    {
+      "id": "fabric-api",
+      "version": "0.161.0+26.3",
+      "note": "in the Minecraft pack (downloaded from Modrinth)"
+    }
+  ],
+  "install": [
+    {
+      "game": "gta5",
+      "strategy": "game-dir-snapshot",
+      "loader": "scripthookv",
+      "files": [
+        {
+          "src": "reshade-6.8.0-addon.zip",
+          "dst": "{game}",
+          "unpack": true,
+          "contents": [
+            {
+              "path": "reshade-shaders/LICENSE-ReShade.md",
+              "sha256": "237ded5b8344f820113efab1e65e91e1f159d9202c5b4856606a0590d3ffdab0"
+            },
+            {
+              "path": "reshade-shaders/Shaders/ReShade.fxh",
+              "sha256": "6dabfbbaf968c3871905d2ea17f96572ff7b1cec01310b5d0e5252b66b30174f"
+            },
+            {
+              "path": "reshade-shaders/Shaders/ReShadeUI.fxh",
+              "sha256": "78adf672df47460297eb9fe6dd238d2aafa24510b52b84feb1a745dff70eb901"
+            },
+            {
+              "path": "ReShade64.asi",
+              "sha256": "0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7"
+            }
+          ],
+          "url": "https://github.com/SIGFAI/mc-in-gta-enhanced/releases/download/v0.1.0/reshade-6.8.0-addon.zip",
+          "sha256": "d4167356162b209be93b6a35cf7e1253cffb2ac00746cf007a7201d362b00d07",
+          "size": 2460727
+        },
+        {
+          "src": "mc-in-gta-enhanced-gta5.zip",
+          "dst": "{game}",
+          "unpack": true,
+          "contents": [
+            {
+              "path": "args.txt",
+              "sha256": "42ed8b4b87d4e65a3d300d2d74d7900967ff378e50488043fa8d31cafe1f7f9c"
+            },
+            {
+              "path": "LICENSE-mc-in-gta-enhanced.txt",
+              "sha256": "db6cfa2ad2c44f73080440c866c4a3a078749d84ba40b4dfa27d50f18a525543"
+            },
+            {
+              "path": "MCPassthrough.asi",
+              "sha256": "bd79cfd040b00786d76cf39bf1a9d1440be138ed2fea6ccec0a8e90b568b8337"
+            },
+            {
+              "path": "reshade-shaders/Shaders/MCPassthrough.fx",
+              "sha256": "7dca166657820fe43be76bcf1a6dfed709ca39c4229400fc7978c91cb40c6705"
+            },
+            {
+              "path": "ReShade.ini",
+              "sha256": "53f1f2a06a4162b151505c432dbcda90b15d361896a41aab9b7fd06753e0394e"
+            },
+            {
+              "path": "ReShadePreset.ini",
+              "sha256": "3a03b473d0309a525108326a530d1dfbb6e29541bd98e4cb078d55067d314676"
+            },
+            {
+              "path": "THIRD_PARTY_NOTICES-mc-in-gta-enhanced.md",
+              "sha256": "f3f9904df70a1cc4b6377c72a8bf140af5f0035049ce6f43f04e7257d76c13b7"
+            }
+          ],
+          "url": "https://github.com/SIGFAI/mc-in-gta-enhanced/releases/download/v0.1.0/mc-in-gta-enhanced-gta5.zip",
+          "sha256": "7c60f158dfd25e3a2a4bb750bab47d8ad44094073bcf46ed0136f4910308dbd7",
+          "size": 200191
+        }
+      ]
+    },
+    {
+      "game": "minecraft",
+      "strategy": "mrpack",
+      "pack": {
+        "src": "mc-in-gta-enhanced.mrpack",
+        "url": "https://github.com/SIGFAI/mc-in-gta-enhanced/releases/download/v0.1.0/mc-in-gta-enhanced.mrpack",
+        "sha256": "7f62aead92f64ba52bf128279f6c81e8a610223f315c864c4e723eabbb8fcd9a",
+        "size": 210804
+      }
+    }
+  ],
+  "launch": [
+    {
+      "game": "minecraft",
+      "wait": "port:25599"
+    },
+    {
+      "game": "gta5",
+      "args": []
+    }
+  ],
+  "files": [
+    {
+      "name": "reshade-6.8.0-addon.zip",
+      "url": "https://github.com/SIGFAI/mc-in-gta-enhanced/releases/download/v0.1.0/reshade-6.8.0-addon.zip",
+      "sha256": "d4167356162b209be93b6a35cf7e1253cffb2ac00746cf007a7201d362b00d07",
+      "size": 2460727
+    },
+    {
+      "name": "mc-in-gta-enhanced-gta5.zip",
+      "url": "https://github.com/SIGFAI/mc-in-gta-enhanced/releases/download/v0.1.0/mc-in-gta-enhanced-gta5.zip",
+      "sha256": "7c60f158dfd25e3a2a4bb750bab47d8ad44094073bcf46ed0136f4910308dbd7",
+      "size": 200191
+    },
+    {
+      "name": "mc-in-gta-enhanced.mrpack",
+      "url": "https://github.com/SIGFAI/mc-in-gta-enhanced/releases/download/v0.1.0/mc-in-gta-enhanced.mrpack",
+      "sha256": "7f62aead92f64ba52bf128279f6c81e8a610223f315c864c4e723eabbb8fcd9a",
+      "size": 210804
+    }
+  ],
+  "source": {
+    "repo": "https://github.com/GrantMatas/minecraft-in-gta-enhanced",
+    "license": "MIT AND BSD-3-Clause",
+    "upstream_license": "MIT",
+    "commit": "981f14ab109d7a8f57b533d4c7ea09a9a36d4255",
+    "hosted": "https://github.com/SIGFAI/mc-in-gta-enhanced",
+    "derived_from": {
+      "repo": "https://github.com/rehan-remade/universal-modder",
+      "path": "examples/minecraft-gta5-passthrough",
+      "commit": "15d6f9d",
+      "license": "MIT"
+    },
+    "built": {
+      "by": "SIGF",
+      "commit": "981f14ab109d7a8f57b533d4c7ea09a9a36d4255",
+      "builder": "AWS EC2 i-0022be8314df37721 (c6i.4xlarge, Windows Server 2022, terminated after the build)",
+      "artifacts": {
+        "LICENSE": "db6cfa2ad2c44f73080440c866c4a3a078749d84ba40b4dfa27d50f18a525543",
+        "MCPassthrough.asi": "bd79cfd040b00786d76cf39bf1a9d1440be138ed2fea6ccec0a8e90b568b8337",
+        "MCPassthrough.fx": "7dca166657820fe43be76bcf1a6dfed709ca39c4229400fc7978c91cb40c6705",
+        "passthrough-0.1.0.jar": "22ea6d77d91edf0a6fe4a86c61072dee071f73cf58276a5ab8f69054810193f5",
+        "ReShade.ini.template": "8eb7e44cba5c30d33456585ec7166b67ea63f4d716ca99581008618f32f7d208",
+        "reshade/ReShade.fxh": "6dabfbbaf968c3871905d2ea17f96572ff7b1cec01310b5d0e5252b66b30174f",
+        "reshade/ReShade64.dll": "0cee63f9c9f13f3ac909c5b4903f4dbb4b719a7ab3b4f13b0deaf83c814b94f7",
+        "reshade/ReShade-LICENSE.md": "237ded5b8344f820113efab1e65e91e1f159d9202c5b4856606a0590d3ffdab0",
+        "reshade/ReShadeUI.fxh": "78adf672df47460297eb9fe6dd238d2aafa24510b52b84feb1a745dff70eb901",
+        "ReShadePreset.ini": "3a03b473d0309a525108326a530d1dfbb6e29541bd98e4cb078d55067d314676",
+        "THIRD_PARTY_NOTICES.md": "f3f9904df70a1cc4b6377c72a8bf140af5f0035049ce6f43f04e7257d76c13b7"
+      }
+    },
+    "bundled": [
+      {
+        "name": "ReShade",
+        "version": "6.8.0",
+        "repo": "https://github.com/crosire/reshade",
+        "commit": "18deaa52de0c425a78b329e9cb3c497281cd00ec",
+        "license": "BSD-3-Clause",
+        "file": "ReShade64.dll from ReShade_Setup_6.8.0_Addon.exe (sha256 afe4c8f13048306307983b8b3d41d5bf00a86820440b0e57dea10950e1176445)",
+        "shaders": {
+          "repo": "https://github.com/crosire/reshade-shaders",
+          "commit": "fd0022170615ce0d8162d219bff07232fa6dd84f",
+          "license": "CC0-1.0"
+        }
+      }
+    ]
+  },
+  "media": {},
+  "built_by": {
+    "author": "GrantMatas",
+    "authors": [
+      "GrantMatas",
+      "rehan-remade"
+    ],
+    "packaged_by": "SIGF"
+  },
+  "idea_by": "GrantMatas",
+  "built_at": "2026-10-05T00:00:00.000Z",
+  "status": "beta",
+  "issues": "https://github.com/GrantMatas/minecraft-in-gta-enhanced/issues",
+  "notes": [
+    "You need GTA V Enhanced (Steam, GTA5_Enhanced.exe; not the Legacy edition) and Minecraft: Java Edition. Windows only.",
+    "Install Script Hook V for your Enhanced build yourself first (it may not be redistributed): from dev-c.com, copy ScriptHookV.dll, dinput8.dll and xinput1_4.dll into the GTA V Enhanced folder. Check that it supports your exact game build.",
+    "The app adds MCPassthrough.asi, ReShade 6.8.0 (as ReShade64.asi, with ReShade.ini and the MCPassthrough effect) and args.txt (-nobattleye) to the GTA folder; Restore removes them and puts back any file they replaced.",
+    "Press Play: Minecraft starts first (the app's Prism instance \"sigf-mc-in-gta-enhanced\", Minecraft 26.3, Fabric Loader 0.19.5, Fabric API 0.161.0+26.3, Java 25, your own Minecraft account); leave its window open. Then GTA V Enhanced starts with BattlEye off: enter Story Mode, then pick Steve on the character wheel (Left Alt or D-pad Down). Picking a GTA character leaves Steve mode; F7 toggles it, F8 re-levels the ground.",
+    "Story mode only: the mod switches itself off in GTA Online. Back up your saves first.",
+    "Upstream's own launcher EXE is not included: it runs Minecraft as a developer client; the app starts both games instead.",
+    "The link listens on 127.0.0.1:25599 with no authentication while Minecraft runs (upstream design).",
+    "SIGF build of 981f14a (no upstream release; the author calls it experimental). Beta: report bugs to the author on the upstream issue tracker."
+  ]
+}
