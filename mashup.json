@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "name": "Minecraft in GTA Enhanced",
   "tagline": "Real Minecraft 26.3 inside GTA V Enhanced story mode: pick Steve on the character wheel and build, fight and blow things up in Los Santos.",
+  "how_to_play": [
+    "Pick Steve on GTA's character wheel and walk, build, fight and fly with Minecraft blocks, items and mobs in Los Santos.",
+    "Press Play: Minecraft starts first and opens its own world (leave it open), then GTA V Enhanced; enter Story Mode.",
+    "Hold Left Alt (controller D-pad Down) for the character wheel and choose Steve; pick a GTA character to leave.",
+    "F7 toggles Steve mode, F8 re-levels the ground, E opens the creative inventory, 1-9 or mouse wheel the hotbar.",
+    "Double-tap Space for the elytra, F9 for a gun mode."
+  ],
   "kind": "passthrough",
   "games": [
     {
