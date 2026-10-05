@@ -231,13 +231,11 @@
   "status": "beta",
   "issues": "https://github.com/GrantMatas/minecraft-in-gta-enhanced/issues",
   "notes": [
-    "You need GTA V Enhanced (Steam, GTA5_Enhanced.exe; not the Legacy edition) and Minecraft: Java Edition. Windows only.",
-    "Install Script Hook V for your Enhanced build yourself first (it may not be redistributed): from dev-c.com, copy ScriptHookV.dll, dinput8.dll and xinput1_4.dll into the GTA V Enhanced folder. Check that it supports your exact game build.",
-    "The app adds MCPassthrough.asi, ReShade 6.8.0 (as ReShade64.asi, with ReShade.ini and the MCPassthrough effect) and args.txt (-nobattleye) to the GTA folder; Restore removes them and puts back any file they replaced.",
-    "Press Play: Minecraft starts first (the app's Prism instance \"sigf-mc-in-gta-enhanced\", Minecraft 26.3, Fabric Loader 0.19.5, Fabric API 0.161.0+26.3, Java 25, your own Minecraft account); leave its window open. Then GTA V Enhanced starts with BattlEye off: enter Story Mode, then pick Steve on the character wheel (Left Alt or D-pad Down). Picking a GTA character leaves Steve mode; F7 toggles it, F8 re-levels the ground.",
-    "Story mode only: the mod switches itself off in GTA Online. Back up your saves first.",
-    "Upstream's own launcher EXE is not included: it runs Minecraft as a developer client; the app starts both games instead.",
-    "The link listens on 127.0.0.1:25599 with no authentication while Minecraft runs (upstream design).",
-    "SIGF build of 981f14a (no upstream release; the author calls it experimental). Beta: report bugs to the author on the upstream issue tracker."
+    "How it works: real Minecraft 26.3 is drawn into GTA V Enhanced story mode. Pick Steve on the character wheel and you walk, build, fight and fly with Minecraft blocks, items and mobs in Los Santos, with your GTA character kept underneath.",
+    "Press Play: Minecraft starts first and opens its own void creative world by itself; leave its window open. GTA V Enhanced then starts with BattlEye off: enter Story Mode. The mod stays off until you pick Steve (or press F7); GTA then shows \"Minecraft passthrough connected\".",
+    "Keys: hold Left Alt (controller D-pad Down) for the character wheel and choose Steve; pick a GTA character to leave Steve mode. F7 toggles Steve mode, F8 re-levels the ground, E opens the creative inventory, 1-9 or mouse wheel the hotbar, double-tap Space for the elytra, F9 a gun mode.",
+    "You need GTA V Enhanced on Steam (GTA5_Enhanced.exe; not the Legacy edition) and Minecraft: Java Edition, on Windows. Install Script Hook V for your exact Enhanced build yourself: copy ScriptHookV.dll, dinput8.dll and xinput1_4.dll into the GTA V Enhanced folder.",
+    "Story mode only: the mod switches itself off in GTA Online (\"MINECRAFT PASSTHROUGH DISABLED IN GTA ONLINE\") and BattlEye stays off while installed. Back up your saves first. Esc shows GTA's pause menu with Minecraft hidden; Resume brings Steve back.",
+    "Both games run at once, so CPU and GPU load is high. Tested upstream on Enhanced 1.0.1158.16 only. The local link has no password while Minecraft runs. Beta (experimental upstream): report bugs to the author with the Report a bug link."
   ]
 }
